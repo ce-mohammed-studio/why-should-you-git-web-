@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اصنع هويتك الرقمية | خدمات تصميم المواقع</title>
+    <!-- استدعاء مكتبة الأنميشن وية السكرول -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --navy-dark: #0f172a; 
+            --navy-card: #1e293b; 
+            --gold-primary: #d4af37; 
+            --gold-bright: #f3e5ab; 
+            --text-light: #f8fafc; 
+            --text-muted: #94a3b8; 
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.4s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--navy-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
+            text-shadow: 0px 4px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .scroll-down {
+            margin-top: 50px;
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold-primary);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* كروت الأسئلة والأجوبة */
+        .qa-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .qa-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .character-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .svg-character {
+            width: 180px;
+            height: 180px;
+            fill: var(--gold-primary);
+            filter: drop-shadow(0px 8px 15px rgba(212, 175, 55, 0.2));
+        }
+
+        .content-box {
+            flex: 2.5;
+            background-color: var(--navy-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .content-box:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .question {
+            font-size: 1.4rem;
+            color: var(--gold-primary);
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .answer {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        /* قسم معرض الأعمال */
+        .portfolio-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .portfolio-card {
+            background-color: var(--navy-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            text-align: right;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+        }
+
+        .portfolio-img-placeholder {
+            height: 180px;
+            background: linear-gradient(45deg, #1e293b, #0f172a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--gold-primary);
+            font-size: 3rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            color: var(--gold-primary);
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .custom-offer-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px dashed var(--gold-primary);
+        }
+
+        /* القسم الختامي للطلب والتواصل */
+        .footer-conclusion {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid var(--gold-primary);
+            padding: 50px 30px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 80px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .footer-conclusion h2 {
+            color: var(--gold-primary);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-conclusion p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+        }
+
+        .phone-number {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            font-weight: bold;
+            margin: 25px 0;
+            display: block;
+            direction: ltr;
+            letter-spacing: 2px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 18px 45px;
+            background-color: #25d366; 
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20ba5a;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .qa-row, .qa-row:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-section h1 { font-size: 2.2rem; }
+            .phone-number { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الواجهة الرئيسية -->
+    <div class="hero-section">
+        <h1 data-aos="fade-down" data-aos-duration="1200">🚀 لا تخلي عملك ومحلك مخفي.. اظهر للعالم بموقع احترافي!</h1>
+        <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="300">أنت مو بحاجة لمجرد صفحة فيسبوك أو إنستغرام؛ أنت بحاجة لنظام يشتغل بمكانك 24 ساعة ويجيبلك زباين وأنت نايم.</p>
+        <div class="scroll-down" data-aos="fade-up" data-aos-delay="600">👇 انزل لِجوا وشوف السالفة كاملة</div>
+    </div>
+
+    <div class="container">
+
+        <!-- السؤال الأول (ظهور تدريجي ناعم) -->
+        <div class="qa-row" data-aos="fade-in" data-aos-duration="1500">
+            <div class="character-box">
+                <svg class="svg-character" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+                </svg>
+            </div>
+            <div class="content-box">
+                <div class="question">س: ليش أسوي موقع خاص بيا مادام عندي صفحة بيج ع الفيسبوك?</div>
+                <div class="answer">
+                    <strong>ج:</strong> شوف عيني، صفحة الفيسبوك مو إلك، هي ملك لشركة ميتا وممكن بأي لحظة تتقيد أو تروح بلاغات وتخسر زباينك وتعبك. والموقع الإلكتروني هو "ملكك الصرف" وطابو باسمك. ما بيه إعلانات تشتت زبونك، وفوقها ينطي هيبة وثقة عمياء لشغلك بحيث الزبون يعرف إنه جاي يتعامل وية براند حقيقي مو بيج وهمي.
+                </div>
+            </div>
+        </div>
+
+        <!-- السؤال الثاني (ظهور تدريجي ناعم) -->
+        <div class="qa-row" data-aos="fade-in" data-aos-duration="1500">
+            <div class="character-box">
+                <svg class="svg-character" viewBox="0 0 24 24">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+            </div>
+            <div class="content-box">
+                <div class="question">س: زين، شلون هذا الموقع راح يزيد مبيعاتي وأرباحي عملياً؟</div>
+                <div class="answer">
+                    <strong>ج:</strong> بـ 2026، الزبون ما عنده خلق ينتظر مبرمج أو يراسل الصفحة ويكول "السعر خاص". بالموقع، زبونك يدخل، يشوف خدماتك، يشتري، ويدفع بـ (زين كاش أو الماستر كارد) بضغطة زر وحدة. الموقع يشتغل كـ "موظف مبيعات ذكي" شغال 24 ساعة بدون إجازات، يجمعلك بيانات الزباين ويرتبلك الحجوزات تلقائياً بدون دوخة راسك.
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم معرض الأعمال -->
+        <div class="portfolio-section" data-aos="fade-in" data-aos-duration="1500">
+            <h2 class="section-title">✨ من أعمالنا ✨</h2>
+            <div class="portfolio-grid">
+                
+                <!-- الموقع الأول -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-placeholder">🎙️</div>
+                    <div class="portfolio-info">
+                        <h3>منصة "سالفة برمجة" التفاعلية</h3>
+                        <p>منصة ويب متكاملة مبنية بأحدث الأنميشن لشرح الأفكار المعقدة وتبسيطها للجمهور بأسلوب قصصي تفاعلي يجذب انتباه الزائر ويحوله لزبون.</p>
+                    </div>
+                </div>
+
+                <!-- الموقع الثاني -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-placeholder">🛒</div>
+                    <div class="portfolio-info">
+                        <h3>متجر إلكتروني متكامل (E-Commerce)</h3>
+                        <p>سوق إلكتروني كامل لعرض المنتجات، مع سلة مشتريات ذكية، ونظام ربط لبوابات الدفع الإلكتروني العراقية والعالمية مع لوحة تحكم لإدارة المخازن.</p>
+                    </div>
+                </div>
+
+                <!-- الموقع الثالث -->
+                <div class="portfolio-card">
+                    <div class="portfolio-img-placeholder">🏢</div>
+                    <div class="portfolio-info">
+                        <h3>موقع شركات وحجوزات متطور</h3>
+                        <p>موقع تعريفي فخم للشركات والعيادات والمكاتب الاستشارية، يحتوي على سيستم حجز مواعيد تلقائي ونظام دردشة فوري لخدمة العملاء.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- النص المخصص للعروض -->
+            <div class="custom-offer-text" data-aos="fade-in" data-aos-duration="1500">
+                سواء جنت صاحب مطعم أو متجر مبيعات أو شركة، أو حتى أفكار شرح تريد تحولها لنمط أنيميشن ذكي وجذاب.. خيارك الأفضل مراسلتنا!
+            </div>
+        </div>
+
+        <!-- القسم الختامي للطلب والتواصل -->
+        <div class="footer-conclusion" data-aos="fade-in" data-aos-duration="1500">
+            <h2>📞 اطلب موقعك الاحترافي الآن</h2>
+            <p>اضغط على الزر بالأسفل وتواصل معي مباشرة عبر الواتساب لبدء العمل على مشروعك</p>
+            
+            <span class="phone-number">07709340980</span>
+            
+            <a href="https://wa.me/9647709340980?text=مرحبا%20اريد%20استفسر%20عن%20تصميم%20موقع" class="whatsapp-btn" target="_blank">
+                💬 احجز موقعك الآن عبر واتساب
+            </a>
+        </div>
+
+    </div>
+
+    <!-- استدعاء الجافا سكريبت لتشغيل مكتبة الحركة -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: false, // يختفي ويظهر الأنميشن كل ما تصعد وتنزل بالسكرول
+            mirror: true // يدعم إخفاء العناصر عند الصعود عكس الاتجاه
+        });
+    </script>
+</body>
+</html>
